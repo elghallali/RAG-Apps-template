@@ -65,6 +65,7 @@ makefile_list = [
     "nomic-embed-text:\n\tollama pull nomic-embed-text",
     "llama3:\n\tollama pull llama3"
 ]
+
 #######################################################################################
 #####                                                                             #####
 #####                           Creating Needed files                             #####
@@ -89,4 +90,24 @@ for filepath in list_of_files:
             filepath.touch()  # create an empty file
 
 
-#its updated
+#######################################################################################
+#####                                                                             #####
+#####                            Add Items to .gitignore                          #####
+#####                                                                             #####
+#######################################################################################
+
+gitignore_path = Path(".gitignore")
+gitignore_entries = ["/data/", "/chroma/"]
+
+# Read existing .gitignore content
+if gitignore_path.exists():
+    with gitignore_path.open("r", encoding="utf-8") as f:
+        existing_lines = f.read().splitlines()
+else:
+    existing_lines = []
+
+# Append new entries if they don't already exist
+with gitignore_path.open("a", encoding="utf-8") as f:
+    for entry in gitignore_entries:
+        if entry not in existing_lines:
+            f.write(entry + "\n")
