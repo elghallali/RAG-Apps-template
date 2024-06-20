@@ -12,6 +12,7 @@ list_of_files = [
     "src/get_embedding_function.py",
     "src/query_data.py",
     "src/populate_database.py",
+    "static/style/style.py",
     "tests/__init__.py",
     "tests/test_app.py",
     "requirements.txt",
@@ -55,16 +56,15 @@ requirements_list = [
 
 makefile_list = [
     "install:\n\tpip install --upgrade pip &&\\\n\t\tpip install -r requirements.txt",
-    "test:\n\tpython -m pytest -vv --cov=core tests/test_*.py",
-    "format:\n\tblack *.py core/*.py tests/test_*.py",
-    "lint:\n\tpylint --disable=R,C *.py core/*.py tests/test_*.py",
+    "test:\n\tpython -m pytest -vv --cov=src tests/test_*.py",
+    "format:\n\tblack *.py src/*.py tests/test_*.py",
+    "lint:\n\tpylint --disable=R,C *.py src/*.py tests/test_*.py",
     "run:\n\tstreamlit run App.py",
     "all: install lint test",
     "ollama:\n\tcurl -fsSL https://ollama.com/install.sh | sh",
     "nomic-embed-text:\n\tollama pull nomic-embed-text",
     "llama3:\n\tollama pull llama3"
 ]
-
 #######################################################################################
 #####                                                                             #####
 #####                           Creating Needed files                             #####
